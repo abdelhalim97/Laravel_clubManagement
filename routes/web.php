@@ -40,6 +40,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/show-clubs/unfollow/{id}',[FollowController::class, 'destroy'])->name('unfollow');
     Route::get('/show-clubs/unfollow/{id}',[FollowController::class, 'edit'])->name('unfollow2');
 
+
 });
 Route::get('/show-clubs/club/{idE}',[CommententController::class, 'show'])->name('show-follows-event');
 Route::get('/show-events/{id}',[EventController::class, 'show'])->name('show-event');
@@ -57,6 +58,10 @@ Route::group(['middleware'=>['auth','role:admin']],function(){//
     Route::post('/dashboard/add-event',[EventController::class, 'store'])->name('add-event-post-dashboard');
     Route::get('/dashboard/clubs-dashboard/delete/{id}',[ ClubsDashboardController::class,'destroy'])->name('delete-club-dashboard');
     Route::get('/dashboard/events-dashboard/delete/{id}',[ EventsDashboardController::class,'destroy'])->name('delete-event-dashboard');
+    Route::get('/dashboard/clubs-dashboard/{id}',[ClubsDashboardController::class, 'show'])->name('clubs-dashboard-show');
+    Route::post('/dashboard/clubs-dashboard/{id}',[ClubsDashboardController::class, 'update'])->name('clubs-dashboard-update');
+    Route::get('/dashboard/events-dashboard/{id}',[EventsDashboardController::class, 'show'])->name('events-dashboard-show');
+    Route::post('/dashboard/events-dashboard/{id}',[EventsDashboardController::class, 'update'])->name('events-dashboard-update');
 
 });
 Route::get('/show-clubs',[ClubController::class, 'index'])->name('show-clubs');

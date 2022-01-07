@@ -8,6 +8,7 @@ use App\Models\Club;
 use App\Models\User;
 use App\Models\Comment;
 use Auth;
+use Redirect;
 class EventsDashboardController extends Controller
 {
     /**
@@ -59,7 +60,10 @@ class EventsDashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        $event=Event::find($id);
+        // $userLeaderId=Club::find($id)->user_id;
+        $users=User::all();
+        return view('admin.event.event-dashboard',compact('event','users'));//
     }
 
     /**
@@ -82,7 +86,23 @@ class EventsDashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1000','min:100'],
+        ]);
+        $event=Event::find($id);
+        if($request->file('img')!=null){
+            if(File::exists("images/".$event->image)){
+                unlink("images/".$event->image);
+            }
+            $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
+            $request->file('img')->move(public_path('images') ,$newImageName);
+            $event->image=$newImageName;
+        }
+            $event->name=$request->input('name');
+            $event->description=$request->input('description');
+            $event->save();
+        return Redirect::back();
     }
 
     /**

@@ -8,8 +8,8 @@
         <th>Image</th>
         <th >Leader</th>
         <th >Created at</th>
+        <th >Update</th>
         <th >Delete</th>
-
       </tr>
     </thead>
     <tbody>
@@ -22,9 +22,12 @@
             <td>{{ $club->created_at }}</td>
             <td>
                 <a class="bg-pink text-blue p-2 text-xl rounded hover:no-underline hover:bg-blue hover:text-pink
+                transition duration-450 ease-in-out" href={{ "/dashboard/clubs-dashboard/".$club->id }}>Update</a>
+            </td>
+            <td>
+                <a class="bg-pink text-blue p-2 text-xl rounded hover:no-underline hover:bg-blue hover:text-pink
                 transition duration-450 ease-in-out" href={{ "/dashboard/clubs-dashboard/delete/".$club->id }}>Delete</a>
             </td>
-
           </tr>
         @endforeach
     </tbody>

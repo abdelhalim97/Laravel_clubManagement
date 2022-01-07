@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 @section('content1')
 
-<div class="mx-auto ">
+<div class="mx-auto w-full lg:w-2/3">
     <form method="POST" action="/add-club" enctype="multipart/form-data">
         @csrf
         <p class="text-center my-6 text-purple text-xl border-purple">Add New Club</p>
@@ -29,7 +29,7 @@
             </ul>
         @endif
         <div class="flex justify-center ">
-            <Button type="submit" class="w-3/4 bg-blue text-pink p-2 text-xl rounded hover:no-underline hover:bg-pink hover:text-blue
+            <Button type="submit" class="mb-4 w-3/4 bg-blue text-pink p-2 text-xl rounded hover:no-underline hover:bg-pink hover:text-blue
             transition duration-450 ease-in-out">Create Club</Button>
         </div>
     </form>

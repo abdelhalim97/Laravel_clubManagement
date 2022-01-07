@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('content1')
-<div class="mx-auto ">
+<div class="mx-auto w-full lg:w-3/5">
     <form method="POST" action="/add-event" enctype="multipart/form-data">
         @csrf
         <p class="text-center my-6 text-purple text-xl border-purple">Add New Event</p>
@@ -15,13 +15,13 @@
     @if (auth()->check())
         @if (Auth::user()->hasRole('admin'))
             <div class="form-group mb-6 text-purple">
-            <label>Select Club Organiser</label>
-            <select class="form-control  border-purple" style="box-shadow: none !important" name="club_id">
-                @foreach ($clubs as $club)
-            <option value="{{ $club->id }}">{{ $club->name }}</option>
-                @endforeach
-            </select>
-        </div>
+                <label>Select Club Organiser</label>
+                <select class="form-control  border-purple" style="box-shadow: none !important" name="club_id">
+                    @foreach ($clubs as $club)
+                <option value="{{ $club->id }}">{{ $club->name }}</option>
+                    @endforeach
+                </select>
+            </div>
         @else
             <input name="club_id" value="{{ $currentUserClubId }}" readonly />
         @endif
@@ -34,7 +34,7 @@
         @endif
     @endif
         <div class="flex justify-center ">
-            <Button type="submit" class="w-3/4 bg-blue text-pink p-2 text-xl rounded hover:no-underline hover:bg-pink hover:text-blue
+            <Button type="submit" class="mb-4 w-3/4 bg-blue text-pink p-2 text-xl rounded hover:no-underline hover:bg-pink hover:text-blue
             transition duration-450 ease-in-out">Create Event</Button>
         </div>
     </form>

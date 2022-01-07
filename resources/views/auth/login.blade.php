@@ -1,3 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Login</title>
+</head>
+<body class="h-screen mx-auto sm:w-full md:w-1/2 ">
+    <div class="mx-auto w-1/2 h-1/2 mt-10">
+        <p class="text-center xl:text-3xl md:text-2xl text-2xl  mx-auto  border-4 border-purple p-1 px-2 text-purple rounded-tr-3xl w-3/5 ">PolyClub</p>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+        <div class="w-5/6 relative border-gray-400 border mt-20 mb-5 mx-auto">
+                <i class="fas fa-user absolute text-fuchsia px-1 pt-1 pb-3 border-r h-full border-gray-400"></i>
+                <input class="w-full h-full pl-7 focus:outline-none " placeholder="email" name="email" id="email" autofocus required :value="old('email')"/>
+            </div>
+            <div class="w-5/6 relative border-gray-400 border  mx-auto">
+                <i class="fas fa-lock absolute text-fuchsia px-1 pt-1 pb-3 border-r h-full border-gray-400"></i>
+                <input type="password" class="w-full h-full pl-7 focus:outline-none pt-0 pb-1 border-0" style="box-shadow: none !important" placeholder="password" name="password" id="password" required autocomplete="current-password"/>
+            </div>
+        <div class=" w-1/2 mx-auto m-10">
+            <button type="submit" class="w-full text-white bg-fuchsia rounded-sm py-1">LOGIN</button>
+        </div>
+        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+{{--
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -53,4 +90,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-guest-layout> --}}

@@ -81,7 +81,7 @@
       </nav>
     </div>
   </aside>
-  <div class="xl:max-w-screen-lg lg:max-w-screen-md md:max-w-screen-sm px-10 md:px-0  w-full mx-auto ">
+  <div class="xl:max-w-screen-lg lg:max-w-screen-md md:max-w-screen-sm px-1 md:px-0  w-full mx-auto ">
         @yield('content1')
 
   </div>

@@ -9,6 +9,7 @@
             <th>Image</th>
             <th >Club</th>
             <th >Created at</th>
+            <th >Update</th>
             <th >Delete</th>
 
           </tr>
@@ -21,6 +22,10 @@
                 <td><img class="rounded-md w-10 h-10" src="{{ asset('images/'.$event->image) }}" cover="resize" /></td>
                 <td>{{ $event->club->name }}</td>
                 <td>{{ $event->created_at }}</td>
+                <td>
+                    <a class="bg-pink text-blue p-2 text-xl rounded hover:no-underline hover:bg-blue hover:text-pink
+                    transition duration-450 ease-in-out" href={{ "/dashboard/events-dashboard/".$event->id }}>Update</a>
+                </td>
                 <td><a class="bg-pink text-blue p-2 text-xl rounded hover:no-underline hover:bg-blue hover:text-pink
                     transition duration-450 ease-in-out" href={{ "/dashboard/events-dashboard/delete/".$event->id }} >Delete</a></td>
               </tr>
