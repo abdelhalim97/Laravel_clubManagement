@@ -1,7 +1,8 @@
 @extends('admin.dashboard')
 @section('content1')
+<div style="display:flex;flex-direction:column;min-height:100vh;height:100%">
 
-<div class="mx-auto w-full lg:w-2/3">
+<div class="mx-auto ">
     <form method="POST" action="/add-club" enctype="multipart/form-data">
         @csrf
         <p class="text-center my-6 text-purple text-xl border-purple">Add New Club</p>
@@ -33,5 +34,6 @@
             transition duration-450 ease-in-out">Create Club</Button>
         </div>
     </form>
+</div>
 </div>
 @endsection()

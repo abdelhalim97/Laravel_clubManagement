@@ -5,8 +5,9 @@
             <span class="navbar-toggler-icon "><i class="fas fa-bars text-purple"></i></span>
             </button>
             <div class="collapse navbar-collapse w-full " id="navbarSupportedContent">
-                <a class="nav-link text-purple" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        {{-- <a class="nav-link text-purple" data-widget="pushmenu" href="#" role="button"><i class="fas fa-expand-alt"></i></a> --}}
 
+{{--  --}}
             <ul class="navbar-nav mr-auto " >
                 <div class="mr-8">
                     <x-custom.nav-links text="Poly Clubs" direct="/"/>
@@ -34,10 +35,15 @@
                 this.closest('form').submit();">
                 {{ __('Log Out') }}
     </x-custom.button> --}}
-            <x-responsive-nav-link :href="route('logout')" class="hover:bg-pink hover:text-blue hover:no-underline"
-                    onclick="event.preventDefault();this.closest('form').submit();">
-                    {{ __('Log Out') }}
-            </x-responsive-nav-link>
+    <div class="flex">
+        <a class="nav-link text-purple" data-widget="pushmenu" href="#" role="button"><i class="fas fa-expand-alt"></i></a>
+
+        <x-responsive-nav-link :href="route('logout')" class="hover:bg-pink hover:text-blue hover:no-underline"
+                onclick="event.preventDefault();this.closest('form').submit();">
+                {{ __('Log Out') }}
+        </x-responsive-nav-link>
+    </div>
+
         </form>
         @else
             <x-custom.button text="Log In" class="mr-2" direct="/login"/>

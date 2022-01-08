@@ -22,7 +22,10 @@
     </head>
     <body style="display:flex;flex-direction:column;height:100vh;">
         @include('general.nav')
+        <div class="px-2 lg:max-w-screen-lg md:max-w-screen-sm  md:px-0 flex justify-between mx-auto ">
+
         @yield('content')
+        </div>
         @include('general.footer')
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -91,7 +91,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        //search
+
     }
 
     /**

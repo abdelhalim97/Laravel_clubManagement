@@ -11,6 +11,7 @@ use App\Http\Controllers\FollowController;
 use App\Http\Controllers\CommententController;
 use App\Http\Controllers\ClubsDashboardController;
 use App\Http\Controllers\EventsDashboardController;
+use App\Http\Controllers\SearchController;
 
 // use App\Http\Controllers\DashboardController;
 
@@ -67,6 +68,10 @@ Route::group(['middleware'=>['auth','role:admin']],function(){//
 Route::get('/show-clubs',[ClubController::class, 'index'])->name('show-clubs');
 Route::get('/show-events',[EventController::class, 'index'])->name('show-events');
 Route::get('/show-clubs/{id}',[ClubController::class, 'show'])->name('show-club');
+Route::post('/show-events', [SearchController::class,'store']);
+Route::post('/show-clubs', [SearchController::class,'create']);
+
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');

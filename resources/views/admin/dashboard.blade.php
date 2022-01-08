@@ -1,5 +1,6 @@
 @extends('../general.app-dashboard')
 @section('content')
+<div class="wrapper">
 <aside class="main-sidebar bg-pink elevation-4">
     {{-- <a class="nav-link hover:text-white text-left mt-1 " style="color:#c2c7d0" data-widget="pushmenu" href="#" role="button">
         <i class="fas fa-bars"></i>
@@ -7,15 +8,16 @@
     </a> --}}
 
     <div class="sidebar">
-      <div class="user-panel pb-3 flex justify-between">
-        <img resize="cover" class="w-14 mt-2" src="https://www.polytecsousse.tn/wp-content/uploads/2020/09/logo-polytechnique-blanc.png"/>
-        <div class="info text-purple mt-2 text-lg p-0">
+      <div class="user-panel pb-3 flex justify-center">
+          {{-- <div></div> --}}
+        {{-- <img resize="cover" class="w-14 mt-2" src="https://www.polytecsousse.tn/wp-content/uploads/2020/09/logo-polytechnique-blanc.png"/> --}}
+        <div class="info text-purple mt-2 text-lg p-0 ">
             {{ Auth::user()->name }}
-          {{-- <a href="#" class="d-block "></a> --}}
+
+        </div>
+        <div>
         </div>
         <div></div>
-        <div></div>
-
       </div>
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
@@ -69,7 +71,6 @@
               <li class="nav-item ml-2">
                 <a href="/dashboard/events-dashboard" class="nav-link text-purple hover:text-fuchsia">
                   <i class="fas fa-tachometer-alt nav-icon"></i>
-
                   <p>Events Dashboard</p>
                 </a>
               </li>
@@ -81,12 +82,12 @@
       </nav>
     </div>
   </aside>
-  <div class="xl:max-w-screen-lg lg:max-w-screen-md md:max-w-screen-sm px-1 md:px-0  w-full mx-auto ">
+  <div class=" lg:max-w-screen-lg md:max-w-screen-sm px-2 md:px-0  mx-auto ">
         @yield('content1')
-
   </div>
   {{-- <div class="content-wrapper" style="min-height: 100%;">
 
   </div> --}}
+</div>
   @endsection()
 

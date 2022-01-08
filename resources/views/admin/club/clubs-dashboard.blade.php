@@ -1,6 +1,9 @@
 @extends('admin.dashboard')
 @section('content1')
-<table class="table">
+{{-- <div class="> --}}
+<div style="display:flex;flex-direction:column;min-height:100vh;height:100%">
+
+<table class="table w-full xl:w-10/12 lg:w-8/12 mx-auto">
     <thead>
       <tr>
         <th>Name</th>
@@ -16,7 +19,7 @@
         @foreach ($clubs as $club)
         <tr>
             <td>{{ $club->name }}</td>
-            <td>{{ $club->description }}</td>
+            <td class="text-sm">{{ $club->description }}</td>
             <td><img class="rounded-md w-10 h-10" src="{{ asset('images/'.$club->image) }}" cover="resize" /></td>
             <td>{{ $club->user->name }}</td>
             <td>{{ $club->created_at }}</td>
@@ -32,4 +35,5 @@
         @endforeach
     </tbody>
   </table>
+</div>
 @endsection()

@@ -1,6 +1,5 @@
 @extends('../general.app')
 @section('content')
-        <div class=" lg:max-w-screen-lg md:max-w-screen-sm px-10 md:px-0 flex justify-between mx-auto ">
             <div class="mx-auto ">
                 <form method="POST" action="/add-event" enctype="multipart/form-data">
                     @csrf
@@ -40,5 +39,4 @@
                     </div>
                 </form>
             </div>
-        </div>
         @endsection()
