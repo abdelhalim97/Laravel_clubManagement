@@ -119,8 +119,6 @@ class EventsDashboardController extends Controller
         $event=Event::find($id);
         if($event->image!="null"){
             unlink("images/".$event->image);
-
-
         }
         $event->delete();
         return redirect('/dashboard/events-dashboard');
