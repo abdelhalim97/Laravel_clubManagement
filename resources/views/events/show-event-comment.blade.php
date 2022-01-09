@@ -9,7 +9,7 @@
             </div>
             <div class="w-1/2 mx-2 my-auto">
                 @if (auth()->check())
-                <form method="POST" action="" class="mb-2">
+                <form method="POST" action="{{ url('') }}" class="mb-2">
                     @csrf
                     @php
                         $like_count=0;
@@ -33,7 +33,7 @@
                     <a href='/show-events/{{ $event->id }}/dislike'><i class="fas fa-thumbs-down"></i></a>{{ $dislike_count }}
                     @endif
                 </form>
-                <form method="POST" action="" class="mb-2">
+                <form method="POST" action="{{ url('') }}" class="mb-2">
                     @csrf
                     <input type="text" class="w-full my-3 border-purple rounded-3xl " placeholder="Write your Comment Here" name="description" style="box-shadow: none !important"/>
                     <div class="flex justify-center">
