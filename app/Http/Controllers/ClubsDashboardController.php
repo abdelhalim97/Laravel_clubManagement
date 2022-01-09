@@ -120,7 +120,10 @@ class ClubsDashboardController extends Controller
     public function destroy($id)
     {
         $club=Club::find($id);
-        unlink("images/".$club->image);
+        if($club->image!="null"){
+            unlink("images/".$club->image);
+
+        }
         $club->delete();
         return redirect('/dashboard/clubs-dashboard');
     }
