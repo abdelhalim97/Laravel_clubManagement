@@ -3,7 +3,7 @@
 <div style="display:flex;flex-direction:column;min-height:100vh;height:100%">
 
 <div class="mx-auto ">
-    <form method="POST" action= "{{ url('/add-club') }}" enctype="multipart/form-data">
+    <form method="POST" action= "/add-club" enctype="multipart/form-data">
         @csrf
         <p class="text-center my-6 text-purple text-xl border-purple">Add New Club</p>
         <input type="text" class="w-full my-3 border-purple"  style="box-shadow: none !important" placeholder="Club Name" name="name"/>

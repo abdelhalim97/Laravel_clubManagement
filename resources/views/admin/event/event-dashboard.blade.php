@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 @section('content1')
-<form class="mx-auto w-full lg:w-2/3 " method="POST" action="{{ url('') }}" enctype="multipart/form-data">
+<form class="mx-auto w-full lg:w-2/3 " method="POST" action="" enctype="multipart/form-data">
     @csrf
     <div class="mt-8 w-5/6 sm:w-1/2 md:w-1/2 lg:w-1/2 mx-auto flex">
         <label class="w-1/3">Name:</label>

@@ -1,7 +1,7 @@
 @extends('../general.app')
 @section('content')
             <div class="mx-auto ">
-                <form method="POST" action="{{ url('/add-event') }}" enctype="multipart/form-data">
+                <form method="POST" action="/add-event" enctype="multipart/form-data">
                     @csrf
                     <p class="text-center my-6 text-purple text-xl border-purple">Add New Event</p>
                     <input type="text" class="w-full my-3 border-purple"  style="box-shadow: none !important" placeholder="Event Name" name="name"/>

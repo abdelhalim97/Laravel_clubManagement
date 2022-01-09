@@ -7,7 +7,7 @@
                         <img class="rounded-md " src="{{ asset('images/'.$club->image) }}" cover="resize" />
                         @if (auth()->check())
                             @if ($test==false)
-                            <form method="POST" action="{{ url('') }}" enctype="multipart/form-data">
+                            <form method="POST" action="" enctype="multipart/form-data">
                                 @csrf
                                 <button
                                 class="absolute top-0 flex bg-purple rounded-md px-1 focus:outline-none hover:bg-pink hover:text-purple">

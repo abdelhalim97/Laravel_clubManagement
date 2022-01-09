@@ -1,7 +1,7 @@
 @extends('../general.app')
 @section('content')
     <div class="mt-8">
-        <form method="POST" action="{{ url('/show-events') }}">
+        <form method="POST" action="/show-events">
             @csrf
             <div class="relative w-1/3 mx-auto">
                 <button type="submit" class=" bg-blue text-pink text-xl rounded-full hover:no-underline hover:bg-pink hover:text-blue
