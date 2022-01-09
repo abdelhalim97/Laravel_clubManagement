@@ -92,8 +92,8 @@ class ClubController extends Controller
         if(Auth::user()){
             $clubs = Auth::user()->clubs;
             $clubId = Club::find($id)->id;
-            foreach ($clubs as $club) {
-                if($club->id==$clubId){
+            foreach ($clubs as $clubTest) {
+                if($clubTest->id==$clubId){
                     $test=true;
                 }
             }

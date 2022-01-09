@@ -56,7 +56,18 @@ class CommententController extends Controller
         $event = Event::find($id);
         $comments = $event->comments;
         $commentsLength=count($comments);
-        return view('events.show-event-comment',compact('event','comments','commentsLength'));
+        $test=false;
+        foreach ($event->likes as $like) {
+            if($like->user_id==Auth::user()->id){
+                if($like->like_type==1){
+                    $test=1;
+                }
+                else{
+                    $test=-1;
+                }
+            }
+        }
+        return view('events.show-event-comment',compact('event','comments','commentsLength','test'));
     }
 
     /**
@@ -91,7 +102,7 @@ class CommententController extends Controller
         // $comment->user_name=Auth::user()->name;
         $comment->save();
         $event = Event::find($id);
-        return redirect('/show-clubs/club/'.$id);
+        return redirect()->refresh();
 
     }
 

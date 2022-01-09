@@ -1,6 +1,6 @@
 @extends('../general.app')
 @section('content')
-<div class=" lg:max-w-screen-lg md:max-w-screen-sm px-10 md:px-0 mx-auto">
+<div class=" lg:max-w-screen-lg md:max-w-screen-sm px-10 md:px-0 mx-auto ">
         <div class=" p-4 md:w-1/2 lg:w-1/2 sm:w-full mx-auto" >
             <div class="border border-blue rounded-md bg-pink p-2" >
                     <div class="relative">
@@ -41,11 +41,14 @@
             </div>
         </div>
         <p class="text-left text-xl text-blue">{{ $club->name }}'s Events:</p>
-        <div class=" p-4 md:w-1/2 lg:w-1/2 sm:w-full mx-auto">
+        {{-- <div class=" p-4 md:w-1/2 lg:w-1/2 sm:w-full mx-auto"> --}}
             @if (count($events)==0 )
                 <p class="text-center text-blue">{{ $club->name }} Club has no Events Right Now</p>
             @else
+            <div class="flex flex-wrap">
                 @foreach ($events as $event)
+            <div class="flex justify-between sm:w-2/4 md:w-2/4 lg:w-1/4 p-4 ">
+
                 <div class="border border-blue rounded-md bg-pink p-2">
                     <a class="hover:no-underline" href="{{ route('show-follows-event',$event->id) }}">
                         <img class="rounded-md" src="{{ asset('images/'.$event->image) }}" cover="resize" />
@@ -53,8 +56,10 @@
                     </a>
                     <p class="text-blue">{{ $event->description }}</p>
                 </div>
-                @endforeach
+            </div>
+
+                @endforeach</div>
             @endif
-    </div>
+    {{-- </div> --}}
 </div>
 @endsection()

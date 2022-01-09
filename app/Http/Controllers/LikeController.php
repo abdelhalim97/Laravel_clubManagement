@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Event;
+use App\Models\Club;
+use App\Models\User;
+use App\Models\Like;
+
+use Auth;
+
 class LikeController extends Controller
 {
     /**
@@ -13,7 +20,7 @@ class LikeController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -45,7 +52,27 @@ class LikeController extends Controller
      */
     public function show($id)
     {
-        //
+        $currenUserId=Auth::user()->id;
+        $likes=Like::all();
+        $test=false;
+        foreach ($likes as $like) {
+            if( $like->user_id==$currenUserId){
+                if($like->event_id==$id){ //
+                    $test=$like;
+                }
+            }
+        }
+        if($test==false){
+            $like=new like;
+            $like->user_id=$currenUserId;
+            $like->event_id=$id;
+            $like->like_type=1;
+            $like->save();
+        }
+        else{
+            $like->delete();
+        }
+        return redirect()->back();
     }
 
     /**
@@ -56,7 +83,27 @@ class LikeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $currenUserId=Auth::user()->id;
+        $likes=Like::all();
+        $test=false;
+        foreach ($likes as $like) {
+            if( $like->user_id==$currenUserId){
+                if($like->event_id==$id){
+                    $test=$like;
+                }
+            }
+        }
+        if($test==false){
+            $like=new like;
+            $like->user_id=$currenUserId;
+            $like->event_id=$id;
+            $like->like_type=0;
+            $like->save();
+        }
+        else{
+            $like->delete();
+        }
+        return redirect()->back();
     }
 
     /**

@@ -14,7 +14,9 @@
     <div class="absolute">
         <img class="w-full h-full" src="{{ asset('images/purple.jpeg') }}" cover="resize" />
     </div>
-    <div class="mx-auto w-1/2 h-1/2 relative pt-10 ">
+<div class=" lg:max-w-screen-lg md:max-w-screen-sm px-10 md:px-0 mx-auto ">
+
+    <div class="mx-auto md:w-1/2 lg:w-1/2 sm:w-ful h-1/2 relative pt-10 ">
         <p class="text-center relative xl:text-3xl md:text-2xl text-2xl mx-auto border-4 border-fuchsia p-1 px-2 text-fuchsia rounded-tr-3xl w-3/5 ">PolyClub</p>
         <form method="POST" action="{{ route('register') }}">
             @csrf
@@ -41,18 +43,23 @@
                 <i class="fas fa-lock absolute text-fuchsia px-1 pt-1 pb-3 border-r h-full border-gray-400"></i>
                 <input type="password" class="w-full h-full pl-7 focus:outline-none pt-0 pb-1 border-0" style="box-shadow: none !important" placeholder="password_confirmation" name="password_confirmation" id="password_confirmation" required />
             </div>
-            <a class="relative text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+            <div class="mt-5 relative w-5/6 mx-auto">
+                <a class=" text-sm text-white hover:text-fuchsia" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+            </div>
+
         <div class="relative w-1/2 mx-auto m-10">
             <button type="submit" class="w-full text-white bg-fuchsia rounded-sm py-1">SignUp</button>
         </div>
+
         <x-auth-session-status class="relative mb-4" :status="session('status')" />
         <x-auth-validation-errors class="relative mb-4" :errors="$errors" />
         </form>
-    </div>
+    </div></div>
 </body>
 </html>
+
 {{-- <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">

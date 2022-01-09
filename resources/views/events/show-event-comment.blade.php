@@ -11,10 +11,34 @@
                 @if (auth()->check())
                 <form method="POST" action="" class="mb-2">
                     @csrf
+                    @php
+                        $like_count=0;
+                        $dislike_count=0;
+                        foreach ($event->likes as $like){
+
+                    if ($like->like_type==1)
+                        $like_count++;
+                    else
+                        $dislike_count++;
+                    }
+                    @endphp
+                    @if ($test==false)
+                    <a href='/show-events/{{ $event->id }}/like'><i class="far fa-thumbs-up"></i></a>{{ $like_count }}
+                    <a href='/show-events/{{ $event->id }}/dislike'><i class="far fa-thumbs-down"></i></a>{{ $dislike_count }}
+                    @elseif ($test==1)
+                    <a href='/show-events/{{ $event->id }}/like'><i class="fas fa-thumbs-up"></i></a>{{ $like_count }}
+                    <a href='/show-events/{{ $event->id }}/dislike'><i class="far fa-thumbs-down"></i></a>{{ $dislike_count }}
+                    @elseif ($test==-1)
+                    <a href='/show-events/{{ $event->id }}/like'><i class="far fa-thumbs-up"></i></a>{{ $like_count }}
+                    <a href='/show-events/{{ $event->id }}/dislike'><i class="fas fa-thumbs-down"></i></a>{{ $dislike_count }}
+                    @endif
+                </form>
+                <form method="POST" action="" class="mb-2">
+                    @csrf
                     <input type="text" class="w-full my-3 border-purple rounded-3xl " placeholder="Write your Comment Here" name="description" style="box-shadow: none !important"/>
                     <div class="flex justify-center">
                         <button class="w-2/4 bg-blue text-pink p-2 text-xl rounded hover:no-underline hover:bg-pink hover:text-blue
-                        transition duration-450 ease-in-out" stype="submit">Comment</button>
+                        transition duration-450 ease-in-out" type="submit">Comment</button>
                     </div>
                 </form>
                 @endif
@@ -31,14 +55,14 @@
                         </a>
                     </div>
                     <p class="text-blue">{{ $comment->description }}</p>
-                    @if($errors->any())
-                    <p class="text-red-700"><i class="fas fa-exclamation-triangle"></i>&nbsp;{{$errors->first()}}</p>
-                    @endif
+
                 </div>
                 @endforeach
+                @if($errors->any())
+                    <p class="text-red-700"><i class="fas fa-exclamation-triangle"></i>&nbsp;{{$errors->first()}}</p>
+                    @endif
             </div>
             @endif
-
             </div>
         </div>
 </div>

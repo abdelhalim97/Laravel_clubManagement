@@ -6,7 +6,7 @@
         <div class="relative w-1/3 mx-auto">
             <button type="submit" class=" bg-blue text-pink text-xl rounded-full hover:no-underline hover:bg-pink hover:text-blue
             transition duration-450 ease-in-out absolute left-2 mt-0.5">
-                <i class="fas fa-search  p-2 "></i>
+                <i class="fas fa-search p-2"></i>
             </button>
             <input name="search" value="{{ request()->search??'' }}" class="w-full rounded-3xl h-10 pl-12 border-blue" type="text"/>
             @if (request()->search)

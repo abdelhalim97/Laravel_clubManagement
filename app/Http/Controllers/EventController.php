@@ -34,12 +34,13 @@ class EventController extends Controller
         $currentUserClub=Club::where('user_id', $currentUserId)->first();
         // dd($currentUserClub);
         if($currentUserClub!=null){
-        $currentUserClubId=$currentUserClub->name;
-        }
-        else{$currentUserClubId=0;}
+        $currentUserClub=$currentUserClub;
         // dd($currentUserClubId);
+        }
+        else{$currentUserClub=0;}
         $clubs = Club::all();
-        return view('events.add-event', compact('clubs','currentUserClubId'));
+        // dd($currentUserClub);
+        return view('events.add-event', compact('clubs','currentUserClub'));
     }
 
     /**
@@ -80,7 +81,19 @@ class EventController extends Controller
         $event = Event::find($id);
         $comments = $event->comments;
         $commentsLength=count($comments);
-        return view('events.show-event-comment',compact('event','comments','commentsLength'));
+        //like logic
+        $test=false;
+        foreach ($event->likes as $like) {
+            if($like->user_id==Auth::user()->id){
+                if($like->like_type==1){
+                    $test=1;
+                }
+                else{
+                    $test=-1;
+                }
+            }
+        }
+        return view('events.show-event-comment',compact('event','comments','commentsLength','test'));
     }
 
     /**

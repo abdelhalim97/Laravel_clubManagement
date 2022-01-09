@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\Comment;
 use Auth;
 use Redirect;
+use File;
+
 class EventsDashboardController extends Controller
 {
     /**

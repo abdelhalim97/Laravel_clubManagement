@@ -14,16 +14,29 @@
                     </div>
                 @if (auth()->check())
                     @if (Auth::user()->hasRole('admin'))
-                        <div class="form-group mb-6 text-purple">
-                        <label>Select Club Organiser</label>
-                        <select class="form-control  border-purple" style="box-shadow: none !important" name="club_id">
-                            @foreach ($clubs as $club)
-                        <option value="{{ $club->id }}">{{ $club->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+
+                                @if (count($clubs)==0)
+                                    <div class="mb-6">there s no Clubs</div>
+                                    @else
+                                    <div class="form-group mb-6 text-purple">
+                                        <label>Select Club Organiser</label>
+                                        <select class="form-control  border-purple" style="box-shadow: none !important" name="club_id">
+                                @foreach ($clubs as $club)
+
+                                            <option value="{{ $club->id }}">{{ $club->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @endif
+
                     @else
-                        <input name="club_id" value="{{ $currentUserClubId }}" readonly />
+                    @if ($currentUserClub==0)
+                        <div class="mb-6">You are not a Leader</div>
+                        @else
+                        <input class="border-0 focus:outline-none mb-6 hidden" name="club_id" value="{{ $currentUserClub->id }}" readonly/>
+                    <input class="border-0 focus:outline-none mb-6" value="{{ $currentUserClub->name }}" style="box-shadow: none !important" readonly />
+                    @endif
+
                     @endif
                 @endif
                 @if ($errors->any())
