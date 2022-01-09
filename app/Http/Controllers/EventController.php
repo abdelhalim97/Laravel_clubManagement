@@ -55,16 +55,23 @@ class EventController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:1000','min:100'],
             'club_id' => ['required','numeric' ],
-            'img' => ['required' ],
+            // 'img' => ['required' ],
         ]);
-        $club=Club::find($request->input('club_id'));
-        $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
-        $request->file('img')->move(public_path('images') ,$newImageName);
         $event=new event;
+
+
+        $club=Club::find($request->input('club_id'));
+        if($request->file('img')!=null){
+            $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
+            $request->file('img')->move(public_path('images') ,$newImageName);
+        $event->image=$newImageName;
+        }
+        else{
+        $event->image="null";
+        }
         $event->name=$request->input('name');
         $event->description=$request->input('description');
         $event->club_id=$request->input('club_id');
-        $event->image=$newImageName;
         $event->save();
         return redirect('/show-events');
 

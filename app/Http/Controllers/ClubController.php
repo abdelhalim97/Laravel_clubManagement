@@ -46,11 +46,18 @@ class ClubController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:1000','min:100'],
             'user_id' => ['required','numeric' ],
-            'img' => ['required' ],
+            // 'img' => ['required' ],
 
         ]);
-        $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
-        $request->file('img')->move(public_path('images') ,$newImageName);
+        $club=new club;
+        if($request->file('img')!=null){
+            $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
+            $request->file('img')->move(public_path('images') ,$newImageName);
+            $club->image=$newImageName;
+        }
+        else{
+            $club->image="null";
+        }
         // $club=Club::create([
         //     'name'=>$request->input('name'),
         //     'description'=>$request->input('description'),
@@ -59,8 +66,8 @@ class ClubController extends Controller
         // ]);
         $clubs=Club::all();
         $test=false;
-        foreach ($clubs as $club ) {
-            if($club->user_id==$request->input('user_id')){
+        foreach ($clubs as $clubt ) {
+            if($clubt->user_id==$request->input('user_id')){
                 $test=true;
             }
         }
@@ -68,11 +75,9 @@ class ClubController extends Controller
             return Redirect::back()->withErrors(['msg' => 'This User is Already a Leader']);
         }
         else{
-            $club=new club;
             $club->name=$request->input('name');
             $club->description=$request->input('description');
             $club->user_id=$request->input('user_id');
-            $club->image=$newImageName;
             $club->save();
             return redirect('/show-clubs');
         }
