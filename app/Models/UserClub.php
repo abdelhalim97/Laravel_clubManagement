@@ -9,6 +9,7 @@ class UserClub extends Model
 {
     use HasFactory;
     protected $table="club_user";
+    protected $primaryKey = 'user_id';
 
     protected $fillable = [
         'user_id',
