@@ -3,7 +3,8 @@
 <div class=" lg:max-w-screen-lg md:max-w-screen-sm px-10 md:px-0 mx-auto">
         <div class=" p-4  sm:w-full mx-auto flex" >
             <div class="border border-blue rounded-md bg-pink p-2 w-1/2 mx-2">
-                    <img class="rounded-md" src="{{ asset('images/'.$event->image) }}" cover="resize" />
+                    <img class="rounded-md" src="{{ asset('images/logo-polytechnique-blanc.png') }}" cover="resize" />
+                    {{-- <img class="rounded-md" src="{{ asset('images/'.$event->image) }}" cover="resize" /> --}}
                     <p class="text-center text-2xl py-2 text-blue">{{ $event->name }}</p>
                 <p class="text-blue">{{ $event->description }}</p>
             </div>

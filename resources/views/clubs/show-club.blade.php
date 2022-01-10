@@ -4,7 +4,9 @@
         <div class=" p-4 md:w-1/2 lg:w-1/2 sm:w-full mx-auto" >
             <div class="border border-blue rounded-md bg-pink p-2" >
                     <div class="relative">
-                        <img class="rounded-md " src="{{ asset('images/'.$club->image) }}" cover="resize" />
+                        <img class="rounded-md " src="{{ asset('images/logo-polytechnique-blanc.png') }}" cover="resize" />
+                        {{-- <img class="rounded-md " src="{{ asset('images/'.$club->image) }}" cover="resize" /> --}}
+
                         @if (auth()->check())
                             @if ($test==false)
                             <form method="POST" action="" enctype="multipart/form-data">
@@ -51,7 +53,8 @@
 
                 <div class="border border-blue rounded-md bg-pink p-2">
                     <a class="hover:no-underline" href="{{ route('show-follows-event',$event->id) }}">
-                        <img class="rounded-md" src="{{ asset('images/'.$event->image) }}" cover="resize" />
+                        <img class="rounded-md" src="{{ asset('images/logo-polytechnique-blanc.png') }}" cover="resize" />
+                        {{-- <img class="rounded-md" src="{{ asset('images/'.$event->image) }}" cover="resize" /> --}}
                         <p class="text-center text-2xl py-2 text-blue">{{ $event->name }}</p>
                     </a>
                     <p class="text-blue">{{ $event->description }}</p>

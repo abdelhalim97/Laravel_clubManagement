@@ -26,7 +26,8 @@
         <div class=" p-4 flex justify-between sm:w-2/4 md:w-2/4 lg:w-1/4" style="height: 500px">
             <div class="border border-blue rounded-md bg-pink p-2 h-4/5" >
                 <a class="hover:no-underline" href="{{ route('show-club',$club->id) }}">
-                    <img class="rounded-md h-2/5 mx-auto" src="{{ asset('images/'.$club->image) }}" cover="resize" />
+                    {{-- <img class="rounded-md h-2/5 mx-auto" src="{{ asset('images/'.$club->image) }}" cover="resize" /> --}}
+                    <img class="rounded-md h-2/5 mx-auto" src="{{ asset('images/logo-polytechnique-blanc.png') }}" cover="resize" />
                     <p class="text-center text-2xl py-2 text-blue">{{ $club->name }}</p>
                 </a>
                 <p class="text-blue overflow-y-auto h-2/5 ">{{ $club->description }}</p>

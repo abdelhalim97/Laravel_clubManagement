@@ -20,7 +20,10 @@
         <tr>
             <td>{{ $club->name }}</td>
             <td class="text-sm">{{ $club->description }}</td>
-            <td><img class="rounded-md w-10 h-10" src="{{ asset('images/'.$club->image) }}" cover="resize" /></td>
+            <td>
+                <img class="rounded-md w-10 h-10" src="{{ asset('images/logo-polytechnique-blanc.png') }}" cover="resize" />
+                {{-- <img class="rounded-md w-10 h-10" src="{{ asset('images/'.$club->image) }}" cover="resize" /> --}}
+            </td>
             <td>{{ $club->user->name }}</td>
             <td>{{ $club->created_at }}</td>
             <td>
