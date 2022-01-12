@@ -10,6 +10,6 @@
             <i class="fab fa-twitter  bg-blue text-pink hover:bg-pink hover:text-blue text-xl rounded-full px-1" ></i>
         </a>
     </div>
-    <div class="text-purple text-md text-center">Made by Abdelhalim Ben Oun & Farouk Amara</div>
+    <div class="text-purple text-md text-center">Made by Abdelhalim Ben Oun</div>
     <img class="w-14 mr-4" resize="cover"  src="https://www.polytecsousse.tn/wp-content/uploads/2020/09/logo-polytechnique-blanc.png"/>
 </footer>
