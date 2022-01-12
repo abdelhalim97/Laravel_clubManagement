@@ -46,18 +46,13 @@ class ClubController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:1000','min:100'],
             'user_id' => ['required','numeric' ],
-            // 'img' => ['required' ],
+            'img' => ['required' ],
 
         ]);
         $club=new club;
-        if($request->file('img')!=null){
-            $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
-            $request->file('img')->move(public_path('images') ,$newImageName);
-            $club->image=$newImageName;
-        }
-        else{
-            $club->image="null";
-        }
+        $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
+        $request->file('img')->move(public_path('images') ,$newImageName);
+        $club->image=$newImageName;
         // $club=Club::create([
         //     'name'=>$request->input('name'),
         //     'description'=>$request->input('description'),

@@ -8,8 +8,8 @@
                 <div class=" p-4 flex justify-between sm:w-2/4 md:w-2/4 lg:w-1/4" >
                     <div class="border border-blue rounded-md bg-pink p-2" >
                         <a class="hover:no-underline" href="{{ route('show-club',$club->id) }}">
-        <img class="rounded-md" src="{{ asset('images/logo-polytechnique-blanc.png') }}" cover="resize" />
-                            {{-- <img class="rounded-md" src="{{ asset('images/'.$club->image) }}" cover="resize" /> --}}
+        {{-- <img class="rounded-md" src="{{ asset('images/logo-polytechnique-blanc.png') }}" cover="resize" /> --}}
+                            <img class="rounded-md" src="{{ asset('images/'.$club->image) }}" cover="resize" />
                             <p class="text-center text-2xl py-2 text-blue">{{ $club->name }}</p>
                         </a>
                         <p class="text-blue">{{ $club->description }}</p>

@@ -12,8 +12,8 @@
     </div>
     <div class="mt-4 mx-auto w-5/6 sm:w-1/2 md:w-1/2 lg:w-1/2">
         <label>Image:</label>
-        <img class="rounded-md w-30 h-30 mx-auto" src="{{ asset('images/logo-polytechnique-blanc.png') }}" cover="resize" />
-            {{-- <img class="rounded-md w-30 h-30 mx-auto" src="{{ asset('images/'.$club->image) }}" cover="resize" /> --}}
+        {{-- <img class="rounded-md w-30 h-30 mx-auto" src="{{ asset('images/logo-polytechnique-blanc.png') }}" cover="resize" /> --}}
+            <img class="rounded-md w-30 h-30 mx-auto" src="{{ asset('images/'.$club->image) }}" cover="resize" />
         <div class="input-group mt-4">
             <div class="custom-file">
             <input name="img" type="file" class="custom-file-input" id="exampleInputFile">
