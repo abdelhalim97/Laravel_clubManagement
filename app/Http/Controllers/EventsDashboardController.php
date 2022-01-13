@@ -91,15 +91,17 @@ class EventsDashboardController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:1000','min:100'],
-            'img' => ['required' ],
+            // 'img' => ['required' ],
         ]);
         $event=Event::find($id);
+        if($request->file('img')!=null){
             if(File::exists("images/".$event->image)){
                 unlink("images/".$event->image);
             }
             $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
             $request->file('img')->move(public_path('images') ,$newImageName);
             $event->image=$newImageName;
+        }
             $event->name=$request->input('name');
             $event->description=$request->input('description');
             $event->save();

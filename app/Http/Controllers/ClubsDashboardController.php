@@ -81,17 +81,21 @@ class ClubsDashboardController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:1000','min:100'],
             'user_id' => ['required','numeric' ],
-            'img' => ['required' ],
+            // 'img' => ['required' ],
         ]);
         $club=Club::find($id);
         $clubs=Club::all();
         $test=false;
-            if(File::exists("images/".$club->image)){
-                unlink("images/".$club->image);
+
+            if($request->file('img')!=null){
+                if(File::exists("images/".$club->image)){
+                    unlink("images/".$club->image);
+                }
+                $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
+                $request->file('img')->move(public_path('images') ,$newImageName);
+                $club->image=$newImageName;
             }
-            $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
-            $request->file('img')->move(public_path('images') ,$newImageName);
-            $club->image=$newImageName;
+
         foreach ($clubs as $clubb ) {
             if($clubb->user_id==$request->input('user_id') && $clubb->id!=$id){
                 $test=true;
