@@ -1,9 +1,7 @@
 @extends('admin.dashboard')
 @section('content1')
-{{-- <div class="> --}}
-<div style="display:flex;flex-direction:column;min-height:100vh;height:100%">
-
-<table class="table w-full xl:w-10/12 lg:w-8/12 mx-auto">
+<div style="display:flex;flex-direction:column;min-height:100vh;height:100%" class="card-body table-responsive">
+<table class=" w-full xl:w-10/12 lg:w-8/12 mx-auto table  ">
     <thead>
       <tr>
         <th>Name</th>
@@ -21,7 +19,6 @@
             <td>{{ $club->name }}</td>
             <td class="text-sm">{{ $club->description }}</td>
             <td>
-                {{-- <img class="rounded-md w-10 h-10" src="{{ asset('images/logo-polytechnique-blanc.png') }}" cover="resize" /> --}}
                 <img class="rounded-md w-10 h-10" src="{{ asset('images/'.$club->image) }}" cover="resize" />
             </td>
             <td>{{ $club->user->name }}</td>

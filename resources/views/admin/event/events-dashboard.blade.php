@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 @section('content1')
-<div style="display:flex;flex-direction:column;min-height:100vh;height:100%">
-    <table class="table w-full xl:w-10/12 lg:w-8/12 mx-auto">
+<div style="display:flex;flex-direction:column;min-height:100vh;height:100%" class="card-body table-responsive">
+    <table class="table w-full xl:w-10/12 lg:w-8/12 mx-auto ">
         <thead>
           <tr>
             <th>Name</th>

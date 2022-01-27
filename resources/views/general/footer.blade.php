@@ -11,5 +11,5 @@
         </a>
     </div>
     <div class="text-purple text-md text-center">Made by Abdelhalim Ben Oun</div>
-    <img class="w-14 mr-4" resize="cover"  src="https://www.polytecsousse.tn/wp-content/uploads/2020/09/logo-polytechnique-blanc.png"/>
+    <a href="/"><img class="w-14 mr-4" resize="cover"  src="https://www.polytecsousse.tn/wp-content/uploads/2020/09/logo-polytechnique-blanc.png"/></a>
 </footer>

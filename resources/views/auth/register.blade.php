@@ -26,7 +26,7 @@
                 <input class="w-full h-full pl-7 focus:outline-none " placeholder="email" name="email" id="email" required :value="old('email')"/>
             </div>
             <div class="relative w-5/6 form-group mb-5 mx-auto" >
-                <label for="role_id" class="text-white">Select your Role</label>
+                <label for="role_id" class="text-white">Select your Role (We are Showing this in Purpose so Visitors can test our Dashboard)</label>
                 <select id="role_id" name="role_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" required style="box-shadow: none !important">
                   <option value="admin">Admin</option>
                   <option value="user">User</option>

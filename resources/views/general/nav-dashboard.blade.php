@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg  border-b-2 border-purple bg-pink justify-between" >
-    <img resize="cover" class="w-14 " src="https://www.polytecsousse.tn/wp-content/uploads/2020/09/logo-polytechnique-blanc.png"/>
+    <a href="/"><img resize="cover" class="w-14 " src="https://www.polytecsousse.tn/wp-content/uploads/2020/09/logo-polytechnique-blanc.png"/></a>
     <div style='position: relative;top:4px' class="flex-row"><!-- height:50px;-->
             <button class="navbar-toggler focus:outline-none "  type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon "><i class="fas fa-bars text-purple"></i></span>
