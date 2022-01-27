@@ -32,15 +32,16 @@ class EventsDashboardController extends Controller
     public function create()
     {
         $currentUserId = Auth::user()->id;
-        $currentUserClub=Club::where('user_id', $currentUserId)->first();
+        $currentUserClub = Club::where('user_id', $currentUserId)->first();
         // dd($currentUserClub);
-        if($currentUserClub!=null){
-        $currentUserClubId=$currentUserClub->name;
+        if ($currentUserClub != null) {
+            $currentUserClubId = $currentUserClub->name;
+        } else {
+            $currentUserClubId = 0;
         }
-        else{$currentUserClubId=0;}
         // dd($currentUserClubId);
         $clubs = Club::all();
-        return view('admin.event.dashboard-add-event', compact('clubs','currentUserClubId'));
+        return view('admin.event.dashboard-add-event', compact('clubs', 'currentUserClubId'));
     }
 
     /**
@@ -62,10 +63,10 @@ class EventsDashboardController extends Controller
      */
     public function show($id)
     {
-        $event=Event::find($id);
+        $event = Event::find($id);
         // $userLeaderId=Club::find($id)->user_id;
-        $users=User::all();
-        return view('admin.event.event-dashboard',compact('event','users'));//
+        $users = User::all();
+        return view('admin.event.event-dashboard', compact('event', 'users')); //
     }
 
     /**
@@ -89,22 +90,22 @@ class EventsDashboardController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:1000','min:100'],
+            'name' => ['required', 'string', 'max:250'],
+            'description' => ['required', 'string', 'max:250', 'min:100'],
             // 'img' => ['required' ],
         ]);
-        $event=Event::find($id);
-        if($request->file('img')!=null){
-            if(File::exists("images/".$event->image)){
-                unlink("images/".$event->image);
+        $event = Event::find($id);
+        if ($request->file('img') != null) {
+            if (File::exists("images/" . $event->image)) {
+                unlink("images/" . $event->image);
             }
-            $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
-            $request->file('img')->move(public_path('images') ,$newImageName);
-            $event->image=$newImageName;
+            $newImageName = time() . '-' . $request->name . '.' . $request->file('img')->extension();
+            $request->file('img')->move(public_path('images'), $newImageName);
+            $event->image = $newImageName;
         }
-            $event->name=$request->input('name');
-            $event->description=$request->input('description');
-            $event->save();
+        $event->name = $request->input('name');
+        $event->description = $request->input('description');
+        $event->save();
         return Redirect::back();
     }
 
@@ -116,8 +117,8 @@ class EventsDashboardController extends Controller
      */
     public function destroy($id)
     {
-        $event=Event::find($id);
-        unlink("images/".$event->image);
+        $event = Event::find($id);
+        unlink("images/" . $event->image);
         $event->delete();
         return redirect('/dashboard/events-dashboard');
     }

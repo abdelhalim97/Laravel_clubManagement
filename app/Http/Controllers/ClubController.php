@@ -43,36 +43,29 @@ class ClubController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:1000','min:100'],
-            'user_id' => ['required','numeric' ],
-            'img' => ['required' ],
+            'name' => ['required', 'string', 'max:250'],
+            'description' => ['required', 'string', 'max:250', 'min:100'],
+            'user_id' => ['required', 'numeric'],
+            'img' => ['required'],
 
         ]);
-        $club=new club;
-        $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
-        $request->file('img')->move(public_path('images') ,$newImageName);
-        $club->image=$newImageName;
-        // $club=Club::create([
-        //     'name'=>$request->input('name'),
-        //     'description'=>$request->input('description'),
-        //     'image'=>$newImageName,
-        //     'user_id'=>$request->input('user_id'),
-        // ]);
-        $clubs=Club::all();
-        $test=false;
-        foreach ($clubs as $clubt ) {
-            if($clubt->user_id==$request->input('user_id')){
-                $test=true;
+        $club = new club;
+        $newImageName = time() . '-' . $request->name . '.' . $request->file('img')->extension();
+        $request->file('img')->move(public_path('images'), $newImageName);
+        $club->image = $newImageName;
+        $clubs = Club::all();
+        $test = false;
+        foreach ($clubs as $clubt) {
+            if ($clubt->user_id == $request->input('user_id')) {
+                $test = true;
             }
         }
-        if($test){
+        if ($test) {
             return Redirect::back()->withErrors(['msg' => 'This User is Already a Leader']);
-        }
-        else{
-            $club->name=$request->input('name');
-            $club->description=$request->input('description');
-            $club->user_id=$request->input('user_id');
+        } else {
+            $club->name = $request->input('name');
+            $club->description = $request->input('description');
+            $club->user_id = $request->input('user_id');
             $club->save();
             return redirect('/show-clubs');
         }
@@ -86,20 +79,20 @@ class ClubController extends Controller
      */
     public function show($id)
     {
-        $test=false;
+        $test = false;
         $club = Club::find($id);
-        $events=$club->events;
-        if(Auth::user()){
+        $events = $club->events;
+        if (Auth::user()) {
             $clubs = Auth::user()->clubs;
             $clubId = Club::find($id)->id;
             foreach ($clubs as $clubTest) {
-                if($clubTest->id==$clubId){
-                    $test=true;
+                if ($clubTest->id == $clubId) {
+                    $test = true;
                 }
             }
         }
 
-        return view('clubs.show-club',compact('club','events','test'));
+        return view('clubs.show-club', compact('club', 'events', 'test'));
     }
 
     /**
@@ -133,6 +126,5 @@ class ClubController extends Controller
      */
     public function destroy($id)
     {
-
     }
 }

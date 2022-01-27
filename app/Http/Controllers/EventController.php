@@ -31,16 +31,17 @@ class EventController extends Controller
     public function create()
     {
         $currentUserId = Auth::user()->id;
-        $currentUserClub=Club::where('user_id', $currentUserId)->first();
+        $currentUserClub = Club::where('user_id', $currentUserId)->first();
         // dd($currentUserClub);
-        if($currentUserClub!=null){
-        $currentUserClub=$currentUserClub;
-        // dd($currentUserClubId);
+        if ($currentUserClub != null) {
+            $currentUserClub = $currentUserClub;
+            // dd($currentUserClubId);
+        } else {
+            $currentUserClub = 0;
         }
-        else{$currentUserClub=0;}
         $clubs = Club::all();
         // dd($currentUserClub);
-        return view('events.add-event', compact('clubs','currentUserClub'));
+        return view('events.add-event', compact('clubs', 'currentUserClub'));
     }
 
     /**
@@ -52,22 +53,21 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:1000','min:100'],
-            'club_id' => ['required','numeric' ],
-            'img' => ['required' ],
+            'name' => ['required', 'string', 'max:250'],
+            'description' => ['required', 'string', 'max:250', 'min:100'],
+            'club_id' => ['required', 'numeric'],
+            'img' => ['required'],
         ]);
-        $event=new event;
-        $club=Club::find($request->input('club_id'));
-        $newImageName = time().'-'.$request->name.'.'.$request->file('img')->extension();
-        $request->file('img')->move(public_path('images') ,$newImageName);
-        $event->image=$newImageName;
-        $event->name=$request->input('name');
-        $event->description=$request->input('description');
-        $event->club_id=$request->input('club_id');
+        $event = new event;
+        $club = Club::find($request->input('club_id'));
+        $newImageName = time() . '-' . $request->name . '.' . $request->file('img')->extension();
+        $request->file('img')->move(public_path('images'), $newImageName);
+        $event->image = $newImageName;
+        $event->name = $request->input('name');
+        $event->description = $request->input('description');
+        $event->club_id = $request->input('club_id');
         $event->save();
         return redirect('/show-events');
-
     }
 
     /**
@@ -80,20 +80,19 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $comments = $event->comments;
-        $commentsLength=count($comments);
+        $commentsLength = count($comments);
         //like logic
-        $test=false;
+        $test = false;
         foreach ($event->likes as $like) {
-            if($like->user_id==Auth::user()->id){
-                if($like->like_type==1){
-                    $test=1;
-                }
-                else{
-                    $test=-1;
+            if ($like->user_id == Auth::user()->id) {
+                if ($like->like_type == 1) {
+                    $test = 1;
+                } else {
+                    $test = -1;
                 }
             }
         }
-        return view('events.show-event-comment',compact('event','comments','commentsLength','test'));
+        return view('events.show-event-comment', compact('event', 'comments', 'commentsLength', 'test'));
     }
 
     /**
@@ -120,16 +119,16 @@ class EventController extends Controller
         $request->validate([
             'description' => ['required', 'string', 'min:1'],
         ]);
-        $userId=Auth::user()->id;
+        $userId = Auth::user()->id;
         $eventId = Event::find($id)->id;
-        $comment=new comment;
-        $comment->description=$request->input('description');
-        $comment->user_id=$userId;
-        $comment->event_id=$eventId;
+        $comment = new comment;
+        $comment->description = $request->input('description');
+        $comment->user_id = $userId;
+        $comment->event_id = $eventId;
         // $comment->user_name=Auth::user()->name;
         $comment->save();
         $event = Event::find($id);
-        return redirect('/show-events/'.$id);
+        return redirect('/show-events/' . $id);
     }
 
     /**

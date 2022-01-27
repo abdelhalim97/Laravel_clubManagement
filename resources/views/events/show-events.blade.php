@@ -1,6 +1,7 @@
 @extends('../general.app')
 @section('content')
     <div class="mt-8">
+        @if (count($events)>0)
         <form method="POST" action="/show-events">
             @csrf
             <div class="relative w-1/3 mx-auto">
@@ -21,6 +22,8 @@
                 @endif
                 </div>
         </form>
+        @endif
+
         <div class=" lg:max-w-screen-lg md:max-w-screen-sm px-10 md:px-0 flex flex-wrap mx-auto">
                 @foreach ($events as $event)
             <div class=" p-4 flex justify-between sm:w-2/4 md:w-2/4 lg:w-1/4 " style="height: 550px" >
