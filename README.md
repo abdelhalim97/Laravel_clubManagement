@@ -1,1 +1,1 @@
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=HDCFT95Z4BY)
+[![video demonstration of my project](https://laravel.com/img/logotype.min.svg)](https://www.youtube.com/watch?v=HDCFT95Z4BY)
